@@ -1,122 +1,179 @@
-import { Container, Heading, SimpleGrid, Divider } from '@chakra-ui/react'
+import { 
+  Container, 
+  Heading, 
+  Divider, 
+  useColorModeValue, 
+  Box, 
+  Text, 
+  Badge, 
+  List, 
+  ListItem, 
+  ListIcon,
+  Button,
+  NextLink
+} from '@chakra-ui/react'
 import Layout from '../components/layouts/article'
-import Section from '../components/section'
-import { WorkGridItem } from '../components/grid-item'
-
-import thumbInkdrop from '../public/images/works/inkdrop_eyecatch.png'
-import thumbWalknote from '../public/images/works/walknote_eyecatch.png'
-import thumbFourPainters from '../public/images/works/the-four-painters_eyecatch.jpg'
-import thumbMenkiki from '../public/images/works/menkiki_eyecatch.png'
-import thumbMargelo from '../public/images/works/margelo_eyecatch.png'
-import thumbModeTokyo from '../public/images/works/modetokyo_eyecatch.png'
-import thumbStyly from '../public/images/works/styly_eyecatch.png'
-import thumbPichu2 from '../public/images/works/pichu2_eyecatch.png'
-import thumbFreeDBTagger from '../public/images/works/freedbtagger_eyecatch.png'
-import thumbAmembo from '../public/images/works/amembo_eyecatch.png'
+import Image from 'next/image'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 
 const Works = () => (
   <Layout title="Works">
-    <Container>
-      <Heading as="h3" fontSize={20} mb={4}>
-        Works
+    <Container
+      mt={16}
+      bg={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(0, 0, 0, 0.8)')} 
+      borderRadius="lg"
+      boxShadow="lg"
+      p={6}
+    >
+      <Box display={{ md: 'flex' }}>
+        <Box flexGrow={1}>
+          <Heading as="h2" variant="page-title">
+            İsmail Yarar
+          </Heading>
+          <p>Software Engineer and Designer</p>
+        </Box>
+        <Box
+          flexShrink={0}
+          mt={{ base: 4, md: 0 }}
+          ml={{ md: 6 }}
+          textAlign="center"
+        >
+          <Box
+            borderColor="whiteAlpha.800"
+            borderWidth={2}
+            borderStyle="solid"
+            display="inline-block"
+            borderRadius="full"
+            overflow="hidden"
+          >
+            <Image
+              src="/images/facta-image.jpeg"
+              alt="Profile image"
+              width="100"
+              height="100"
+            />
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Divider for separating sections */}
+      <Divider my={6} />
+
+      {/* Experience Section Header */}
+      <Heading as="h3" variant="section-title">
+        Experience
       </Heading>
 
-      <SimpleGrid columns={[1, 1, 2]} gap={6}>
-        <Section>
-          <WorkGridItem id="inkdrop" title="Inkdrop" thumbnail={thumbInkdrop}>
-            A Markdown note-taking app with 100+ plugins, cross-platform and
-            encrypted data sync support
-          </WorkGridItem>
-        </Section>
-        <Section>
-          <WorkGridItem
-            id="walknote"
-            title="walknote"
-            thumbnail={thumbWalknote}
-          >
-            Music recommendation app for iOS
-          </WorkGridItem>
-        </Section>
-
-        <Section delay={0.1}>
-          <WorkGridItem
-            id="fourpainters"
-            title="The four painters"
-            thumbnail={thumbFourPainters}
-          >
-            A video work generated with deep learning, imitating famous four
-            painters like Van Gogh
-          </WorkGridItem>
-        </Section>
-        <Section delay={0.1}>
-          <WorkGridItem id="menkiki" thumbnail={thumbMenkiki} title="Menkiki">
-            An app that suggests ramen(noodle) shops based on a given photo of
-            the ramen you want to eat
-          </WorkGridItem>
-        </Section>
-      </SimpleGrid>
-
-      <Section delay={0.2}>
-        <Divider my={6} />
-
-        <Heading as="h3" fontSize={20} mb={4}>
-          Collaborations
+      {/* Freelance Developer Experience */}
+      <Box p={4} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
+        <Heading as="h4" fontSize={18} mb={2}>
+          Freelance Developer
         </Heading>
-      </Section>
+        <Text fontSize={14} color={useColorModeValue('gray.600', 'gray.300')}>
+          <Badge colorScheme="green">2023 - Present</Badge> at Facta
+        </Text>
+        <Text mt={2} color={useColorModeValue('gray.600', 'gray.300')}>
+          Developing custom solutions for various clients, focusing on modern web technologies, game prototypes, and application design.
+        </Text>
+        {/* List of Responsibilities */}
+        <List mt={4} spacing={3}>
+          <ListItem fontSize="sm"> {/* Adjusted font size for smaller text */}
+            <ListIcon as={ChevronRightIcon} color="green.500" /> {/* Icon used for each list item */}
+            Worked with clients from diverse industries to build tailored web and mobile applications          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="green.500" />
+            Managed and delivered projects from conception to deployment
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="green.500" />
+            Continuously learning and implementing the latest technologies to improve my offerings
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="green.500" />
+            Designed responsive user interfaces that enhance user experience
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="green.500" />
+            Delivered on-demand software commissions, including custom plugins, features, and integrations
+          </ListItem>
+        </List>
+      </Box>
 
-      <SimpleGrid columns={[1, 1, 2]} gap={6}>
-        <Section delay={0.3}>
-          <WorkGridItem id="margelo" thumbnail={thumbMargelo} title="Margelo">
-            A website of the elite app development and contracting agency based
-            in Austria
-          </WorkGridItem>
-        </Section>
-        <Section delay={0.3}>
-          <WorkGridItem
-            id="modetokyo"
-            thumbnail={thumbModeTokyo}
-            title="mode.tokyo"
-          >
-            The mode magazine for understanding to personally enjoy Japan
-          </WorkGridItem>
-        </Section>
-        <Section delay={0.3}>
-          <WorkGridItem id="styly" thumbnail={thumbStyly} title="Styly">
-            A VR Creative tools for fashion brands
-          </WorkGridItem>
-        </Section>
-      </SimpleGrid>
-
-      <Section delay={0.4}>
-        <Divider my={6} />
-
-        <Heading as="h3" fontSize={20} mb={4}>
-          Old works
+      {/* Mendix Developer Experience */}
+      <Box p={4} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
+        <Heading as="h4" fontSize={18} mb={2}>
+          Mendix Developer
         </Heading>
-      </Section>
+        <Text fontSize={14} color={useColorModeValue('gray.600', 'gray.300')}>
+          <Badge colorScheme="blue">2022 - 2023</Badge> at BAYPM
+        </Text>
+        <Text mt={2} color={useColorModeValue('gray.600', 'gray.300')}>
+          Worked as a Mendix Developer, collaborating with cross-functional teams to build and maintain low-code web applications that improved business processes.
+        </Text>
+        {/* List of Responsibilities */}
+        <List mt={4} spacing={3}>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="blue.500" />
+            Collaborated with cross-functional teams to ensure seamless integration of new features into existing systems
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="blue.500" />
+            Designed and implemented user-friendly, intuitive interfaces using Mendix, resulting in increased customer satisfaction
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="blue.500" />
+            Contributed to business process optimization by developing custom solutions that automated routine tasks and workflows
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="blue.500" />
+            Participated in agile development processes, ensuring timely delivery of new features and updates
+          </ListItem>
+        </List>
+      </Box>
 
-      <SimpleGrid columns={[1, 1, 2]} gap={6}>
-        <Section delay={0.5}>
-          <WorkGridItem id="pichu2" thumbnail={thumbPichu2} title="Pichu*Pichu">
-            Twitter client app for iPhone Safari
-          </WorkGridItem>
-        </Section>
-        <Section delay={0.5}>
-          <WorkGridItem
-            id="freedbtagger"
-            thumbnail={thumbFreeDBTagger}
-            title="freeDBTagger"
-          >
-            Automatic audio file tagging tool using FreeDB for Windows
-          </WorkGridItem>
-        </Section>
-        <Section delay={0.6}>
-          <WorkGridItem id="amembo" thumbnail={thumbAmembo} title="Amembo">
-            P2P private file sharing tool with MSN Messenger integration for
-            Windows
-          </WorkGridItem>
-        </Section>
-      </SimpleGrid>
+      {/* Divider for separating sections */}
+      <Divider my={6} />
+
+      {/* Education Section Header */}
+      <Heading as="h3" variant="section-title">
+        Education
+      </Heading>
+
+      {/* Education Section */}
+      <Box p={4} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
+        <Heading as="h4" fontSize={18} mb={2}>
+          B.Sc. in Software Engineering
+        </Heading>
+        <Text fontSize={14} color={useColorModeValue('gray.600', 'gray.300')}>
+          <Badge colorScheme="orange">2021 - Present</Badge> at Karadeniz Technical University
+        </Text>
+        <Text mt={2} color={useColorModeValue('gray.600', 'gray.300')}>
+          Focused on software engineering principles, systems design, and scalable architecture development. Key areas of study include:
+        </Text>
+        {/* List of Key Study Areas */}
+        <List mt={4} spacing={3}>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="orange.500" />
+            Object-Oriented Programming & Design Patterns
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="orange.500" />
+            Database Management & SQL
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="orange.500" />
+            Software Development Life Cycle (SDLC)
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="orange.500" />
+            Cloud Computing & Distributed Systems
+          </ListItem>
+          <ListItem fontSize="sm">
+            <ListIcon as={ChevronRightIcon} color="orange.500" />
+            Scalable System Architecture Design
+          </ListItem>
+        </List>
+      </Box>
     </Container>
   </Layout>
 )
