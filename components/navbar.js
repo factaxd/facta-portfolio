@@ -28,7 +28,8 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
       href={href}
       scroll={false}
       p={2}
-      bg={active ? 'grassTeal' : undefined}
+      borderRadius={10}
+      bg={active ? '#fbd38d' : undefined}
       color={active ? '#202023' : inactiveColor}
       target={target}
       {...props}
@@ -58,7 +59,7 @@ const Navbar = props => {
       <Container
         display="flex"
         p={2}
-        maxW="container.md"
+        maxW="center"
         wrap="wrap"
         align="center"
         justify="space-between"
@@ -78,13 +79,13 @@ const Navbar = props => {
           mt={{ base: 4, md: 0 }}
         >
           <LinkItem href="/works" path={path}>
-            Projects
+            Portfolio
           </LinkItem>
           
-{/*           <LinkItem href="/wallpapers" path={path}>
-            Wallpapers
+          <LinkItem href="/wallpapers" path={path}>
+            Projects
           </LinkItem>
-          <LinkItem href="/posts" path={path}>
+{/*           <LinkItem href="/posts" path={path}>
             Posts
           </LinkItem>
           <LinkItem href="https://uses.craftz.dog/">Uses</LinkItem> */}
@@ -114,27 +115,57 @@ const Navbar = props => {
                 variant="outline"
                 aria-label="Options"
               />
-              <MenuList>
-                <MenuItem as={MenuLink} href="/">
+              <MenuList bg={useColorModeValue('#dd6b20', '#fbd38d')} >
+                <MenuItem
+                  as={MenuLink}
+                  href="/"
+                  bg={useColorModeValue('#dd6b20', '#fbd38d')} 
+                  color={useColorModeValue('white', 'black')} 
+                  _hover={{
+                    bg: useColorModeValue('#c05621', '#f6ad55'), 
+                    color: useColorModeValue('white', 'black') 
+                  }}
+                >
                   About
                 </MenuItem>
-                <MenuItem as={MenuLink} href="/works">
-                  Works
+                
+                <MenuItem
+                  as={MenuLink}
+                  href="/works"
+                  bg={useColorModeValue('#dd6b20', '#fbd38d')}
+                  color={useColorModeValue('white', 'black')}
+                  _hover={{
+                    bg: useColorModeValue('#c05621', '#f6ad55'),
+                    color: useColorModeValue('white', 'black')
+                  }}
+                >
+                  Portfolio
                 </MenuItem>
-                <MenuItem as={MenuLink} href="/wallpapers">
-                  Wallpapers
+
+                <MenuItem
+                  as={MenuLink}
+                  href="/wallpapers"
+                  bg={useColorModeValue('#dd6b20', '#fbd38d')}
+                  color={useColorModeValue('white', 'black')}
+                  _hover={{
+                    bg: useColorModeValue('#c05621', '#f6ad55'),
+                    color: useColorModeValue('white', 'black')
+                  }}
+                >
+                  Projects
                 </MenuItem>
-                <MenuItem as={MenuLink} href="/posts">
-                  Posts
-                </MenuItem>
-                <MenuItem as={MenuLink} href="https://uses.craftz.dog/">
-                  Uses
-                </MenuItem>
+
                 <MenuItem
                   as={Link}
-                  href="https://github.com/craftzdog/craftzdog-homepage"
+                  href="https://github.com/factaxd"
+                  bg={useColorModeValue('#dd6b20', '#fbd38d')}
+                  color={useColorModeValue('white', 'black')}
+                  _hover={{
+                    bg: useColorModeValue('#c05621', '#f6ad55'),
+                    color: useColorModeValue('white', 'black')
+                  }}
                 >
-                  View Source
+                  GitHub
                 </MenuItem>
               </MenuList>
             </Menu>

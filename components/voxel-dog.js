@@ -1,18 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { loadGLTFModel } from '../lib/model'
 import { DogSpinner, DogContainer } from './voxel-dog-loader'
 
-function easeOutCirc(x) {
-  return Math.sqrt(1 - Math.pow(x - 1, 4))
-}
-
-const VoxelDog = () => {
+const VoxelRain = () => {
   const refContainer = useRef()
   const [loading, setLoading] = useState(true)
   const refRenderer = useRef()
-  const urlDogGLB = (process.env.NODE_ENV === 'production' ? 'https://craftzdog.global.ssl.fastly.net/homepage' : '') + '/dog.glb'
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer
@@ -25,7 +19,6 @@ const VoxelDog = () => {
     }
   }, [])
 
-  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     const { current: container } = refContainer
     if (container) {
@@ -41,67 +34,78 @@ const VoxelDog = () => {
       renderer.outputEncoding = THREE.sRGBEncoding
       container.appendChild(renderer.domElement)
       refRenderer.current = renderer
+
       const scene = new THREE.Scene()
+      const camera = new THREE.PerspectiveCamera(75, scW / scH, 0.1, 1000)
+      camera.position.set(0, 10, 20)
+      scene.add(camera)
 
-      const target = new THREE.Vector3(-0.5, 1.2, 0)
-      const initialCameraPosition = new THREE.Vector3(
-        20 * Math.sin(0.2 * Math.PI),
-        10,
-        20 * Math.cos(0.2 * Math.PI)
-      )
-
-      // 640 -> 240
-      // 8   -> 6
-      const scale = scH * 0.005 + 4.8
-      const camera = new THREE.OrthographicCamera(
-        -scale,
-        scale,
-        scale,
-        -scale,
-        0.01,
-        50000
-      )
-      camera.position.copy(initialCameraPosition)
-      camera.lookAt(target)
-
-      const ambientLight = new THREE.AmbientLight(0xcccccc, Math.PI)
+      const ambientLight = new THREE.AmbientLight(0xcccccc, 0.5)
       scene.add(ambientLight)
 
+      // Kamera fareyi takip edecek şekilde ayarlandı
       const controls = new OrbitControls(camera, renderer.domElement)
-      controls.autoRotate = true
-      controls.target = target
+      controls.enableDamping = true // Kameranın hareketini yumuşatmak için
+      controls.dampingFactor = 0.1
+      controls.enableZoom = true // Kullanıcı yakınlaştırma/uzaklaştırma yapabilir
+      controls.autoRotate = false // Otomatik döndürmeyi kapattık
+      controls.target.set(0, 0, 0)
 
-      loadGLTFModel(scene, urlDogGLB, {
-        receiveShadow: false,
-        castShadow: false
-      }).then(() => {
-        animate()
-        setLoading(false)
+      // Zoom sınırlarını belirliyoruz
+      controls.minDistance = 5 // Minimum uzaklık (zoom-in sınırı)
+      controls.maxDistance = 50 // Maksimum uzaklık (zoom-out sınırı)
+
+      // Yağmur damlacıklarını oluşturuyoruz
+      const rainCount = 10000 // Yağmur damlacık sayısını artırabiliriz
+      const rainGeometry = new THREE.BufferGeometry()
+      const rainPositions = new Float32Array(rainCount * 3)
+      const rainSpeeds = new Float32Array(rainCount) // Farklı hızlar için
+
+      for (let i = 0; i < rainCount; i++) {
+        rainPositions[i * 3] = Math.random() * 400 - 200
+        rainPositions[i * 3 + 1] = Math.random() * 500 - 250
+        rainPositions[i * 3 + 2] = Math.random() * 400 - 200
+        rainSpeeds[i] = Math.random() * 0.05 + 0.02 // Her yağmur tanesi için farklı bir hız
+      }
+
+      rainGeometry.setAttribute('position', new THREE.BufferAttribute(rainPositions, 3))
+
+      const rainMaterial = new THREE.PointsMaterial({
+        color: 0xaaaaaa,
+        size: 0.6, // Daha küçük boyutlar daha estetik olabilir
+        transparent: true,
+        opacity: 0.6, // Opaklığı biraz daha düşürdük
       })
 
+      const rain = new THREE.Points(rainGeometry, rainMaterial)
+      scene.add(rain)
+
       let req = null
-      let frame = 0
       const animate = () => {
         req = requestAnimationFrame(animate)
 
-        frame = frame <= 100 ? frame + 1 : frame
+        // Yağmur damlacıklarını hareket ettiriyoruz
+        const positions = rain.geometry.attributes.position.array
+        for (let i = 0; i < rainCount; i++) {
+          positions[i * 3 + 1] -= rainSpeeds[i] // Farklı hızlarla yumuşak düşme
 
-        if (frame <= 100) {
-          const p = initialCameraPosition
-          const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
+          // Hafif rüzgar etkisi (yatayda rastgele hareket)
+          positions[i * 3] += Math.sin(Date.now() * 0.001 + i) * 0.01
+          positions[i * 3 + 2] += Math.cos(Date.now() * 0.001 + i) * 0.01
 
-          camera.position.y = 10
-          camera.position.x =
-            p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
-          camera.position.z =
-            p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed)
-          camera.lookAt(target)
-        } else {
-          controls.update()
+          if (positions[i * 3 + 1] < -200) {
+            positions[i * 3 + 1] = 200 // Eğer yer seviyesine ulaştıysa, yukarıya al
+          }
         }
 
+        rain.geometry.attributes.position.needsUpdate = true
+
+        controls.update() // Kamera kontrol güncellemesi
         renderer.render(scene, camera)
       }
+
+      animate()
+      setLoading(false)
 
       return () => {
         cancelAnimationFrame(req)
@@ -123,4 +127,4 @@ const VoxelDog = () => {
   )
 }
 
-export default VoxelDog
+export default VoxelRain

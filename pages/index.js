@@ -23,17 +23,33 @@ import Image from 'next/image'
 
 const Home = () => (
   <Layout>
-    <Container>
-      <Box
+<Container
+      mt={16}
+      bg={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(0, 0, 0, 0.8)')} 
+      borderRadius="lg"
+      boxShadow="lg" 
+      p={6} 
+    >
+    <Box
         borderRadius="lg"
         mb={6}
+        fontWeight={"medium"}
         p={3}
         textAlign="center"
-        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+        bg={useColorModeValue('#dd6b20', '#fbd38d')} 
+        color={useColorModeValue('white', 'black')} 
+        border="1px solid"
+        borderColor={useColorModeValue('#c05621', '#f6ad55')} 
         css={{ backdropFilter: 'blur(10px)' }}
+        _hover={{
+          backgroundColor: useColorModeValue('#c05621', '#f6ad55'), 
+          borderColor: useColorModeValue('#9c4221', '#dd6b20'), 
+          transform: 'scale(1.05)',
+          transition: 'all 0.3s ease-in-out',
+        }}
       >
         Hello, I&apos;m a software developer.
-      </Box>
+    </Box>
 
       <Box display={{ md: 'flex' }}>
         <Box flexGrow={1}>
@@ -83,17 +99,17 @@ const Home = () => (
     He shares insights and knowledge on various platforms to inspire 
     other developers.
   </Paragraph>
-  <Box align="center" my={4}>
-    <Button
-      as={NextLink}
-      href="/works"
-      scroll={false}
-      rightIcon={<ChevronRightIcon />}
-      colorScheme="teal"
-    >
-      My portfolio
-    </Button>
-  </Box>
+    <Box align="center" my={4}>
+      <Button
+        as={NextLink}
+        href="/works"
+        scroll={false}
+        rightIcon={<ChevronRightIcon />}
+        colorScheme="orange"
+      >
+        My Portfolio
+      </Button>
+    </Box>
 </Section>
 
 
@@ -143,7 +159,7 @@ const Home = () => (
             <Link href="https://github.com/factaxd" target="_blank">
               <Button
                 variant="ghost"
-                colorScheme="teal"
+                colorScheme="orange"
                 leftIcon={<IoLogoGithub />}
               >
                 @factaxd
