@@ -8,6 +8,7 @@ import {
   Button,
   List,
   ListItem,
+  HStack,
   useColorModeValue
 } from '@chakra-ui/react'
 import { ChevronRightIcon, EmailIcon } from '@chakra-ui/icons'
@@ -15,22 +16,21 @@ import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
-import { GridItem } from '../components/grid-item'
-import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
+import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
 import thumbYouTube from '../public/images/links/youtube.png'
 import thumbInkdrop from '../public/images/works/inkdrop_eyecatch.png'
 import Image from 'next/image'
 
 const Home = () => (
   <Layout>
-<Container
+    <Container
       mt={16}
       bg={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(0, 0, 0, 0.8)')} 
       borderRadius="lg"
       boxShadow="lg" 
       p={6} 
     >
-    <Box
+      <Box
         borderRadius="lg"
         mb={6}
         fontWeight={"medium"}
@@ -49,7 +49,7 @@ const Home = () => (
         }}
       >
         Hello, I&apos;m a software engineer.
-    </Box>
+      </Box>
 
       <Box display={{ md: 'flex' }}>
         <Box flexGrow={1}>
@@ -85,57 +85,32 @@ const Home = () => (
       </Box>
 
       <Section delay={0.1}>
-  <Heading as="h3" variant="section-title">
-    About Me
-  </Heading>
-  <Paragraph>
-    İsmail Yarar is a developer with a passion
-    for building innovative digital solutions. He excels in
-    turning ideas into reality, from the initial stages of 
-    planning and design to solving real-world problems through 
-    code. When he's not online, he enjoys exploring new technologies 
-    and working on side projects. Currently, İsmail is focused on 
-    developing personal projects and refining his technical skills. 
-    He shares insights and knowledge on various platforms to inspire 
-    other developers.
-  </Paragraph>
-    <Box align="center" my={4}>
-      <Button
-        as={NextLink}
-        href="/works"
-        scroll={false}
-        rightIcon={<ChevronRightIcon />}
-        colorScheme="orange"
-      >
-        My Portfolio
-      </Button>
-    </Box>
-</Section>
-
-
-{/*       <Section delay={0.2}>
         <Heading as="h3" variant="section-title">
-          Bio
+          About Me
         </Heading>
-        <BioSection>
-          <BioYear>2002</BioYear>
-          Born in Turkey (大阪), Japan.
-        </BioSection>
-        <BioSection>
-          <BioYear>2010</BioYear>
-          Completed the Master&apos;s Program in the Graduate School of
-          Information Science at Nara Institute of Science and Technology
-          (奈良先端科学技術大学院大学情報科学研究科修士課程)
-        </BioSection>
-        <BioSection>
-          <BioYear>2010</BioYear>
-          Worked at Yahoo! Japan (ヤフー株式会社入社)
-        </BioSection>
-        <BioSection>
-          <BioYear>2012 to present</BioYear>
-          Working as a freelancer
-        </BioSection>
-      </Section> */}
+        <Paragraph>
+          İsmail Yarar is a developer with a passion
+          for building innovative digital solutions. He excels in
+          turning ideas into reality, from the initial stages of 
+          planning and design to solving real-world problems through 
+          code. When he's not online, he enjoys exploring new technologies 
+          and working on side projects. Currently, İsmail is focused on 
+          developing personal projects and refining his technical skills. 
+          He shares insights and knowledge on various platforms to inspire 
+          other developers.
+        </Paragraph>
+        <Box align="center" my={4}>
+          <Button
+            as={NextLink}
+            href="/works"
+            scroll={false}
+            rightIcon={<ChevronRightIcon />}
+            colorScheme="orange"
+          >
+            My Portfolio
+          </Button>
+        </Box>
+      </Section>
 
       <Section delay={0.3}>
         <Heading as="h3" variant="section-title">
@@ -152,21 +127,35 @@ const Home = () => (
 
       <Section delay={0.3}>
         <Heading as="h3" variant="section-title">
-          On the web
+          Contact Me
         </Heading>
-        <List>
-          <ListItem>
-            <Link href="https://github.com/factaxd" target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="orange"
-                leftIcon={<IoLogoGithub />}
-              >
-                @factaxd
-              </Button>
-            </Link>
-          </ListItem>
-        </List>
+        <HStack spacing={4} justify="center">
+          <Link href="https://github.com/factaxd" target="_blank">
+            <Button
+              variant="ghost"
+              colorScheme="orange"
+              leftIcon={<IoLogoGithub />}
+            >
+              @factaxd
+            </Button>
+          </Link>
+          <Button
+            variant="ghost"
+            colorScheme="orange"
+            leftIcon={<EmailIcon />}
+          >
+            ismileyarar@gmail.com
+          </Button>
+          <Link href="https://linkedin.com/in/facta" target="_blank">
+            <Button
+              variant="ghost"
+              colorScheme="orange"
+              leftIcon={<IoLogoLinkedin />}
+            >
+              LinkedIn
+            </Button>
+          </Link>
+        </HStack>
       </Section>
     </Container>
   </Layout>

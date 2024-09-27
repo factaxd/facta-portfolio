@@ -18,6 +18,7 @@ import {
 import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './theme-toggle-button'
 import { IoLogoGithub } from 'react-icons/io5'
+import { FaGamepad } from 'react-icons/fa'  
 
 const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href
@@ -102,6 +103,19 @@ const Navbar = props => {
             <IoLogoGithub />
             GitHub
           </LinkItem>
+
+          <LinkItem
+            target="_blank"
+            href="https://factaxd.itch.io/"
+            path={path}
+            display="inline-flex"
+            alignItems="center"
+            style={{ gap: 4 }}
+            pl={2}
+          >
+            <FaGamepad />  {/* Replace with gamepad icon */}
+            itch.io
+          </LinkItem>
         </Stack>
 
         <Box flex={1} align="right">
@@ -166,6 +180,19 @@ const Navbar = props => {
                   }}
                 >
                   GitHub
+                </MenuItem>
+
+                <MenuItem
+                  as={Link}
+                  href="https://factaxd.itch.io/"
+                  bg={useColorModeValue('#dd6b20', '#fbd38d')}
+                  color={useColorModeValue('white', 'black')}
+                  _hover={{
+                    bg: useColorModeValue('#c05621', '#f6ad55'),
+                    color: useColorModeValue('white', 'black')
+                  }}
+                >
+                  itch.io
                 </MenuItem>
               </MenuList>
             </Menu>
