@@ -16,16 +16,15 @@ export const DogContainer = forwardRef(({ children }, ref) => (
   <Box
     ref={ref}
     className="voxel-dog"
-    position="absolute" // Kutuyu mutlak konuma getirdik
-    top={0} // Üstten 0 mesafe (tam ekran)
-    left={0} // Soldan 0 mesafe (tam ekran)
-    right={0} // Sağdan 0 mesafe (tam ekran)
-    bottom={0} // Alttan 0 mesafe (tam ekran)
-    w="100vw" // Genişlik: 100% (viewport genişliği)
-    h="100vh" // Yükseklik: 100% (viewport yüksekliği)
-    display="flex" // İçeriği ortalamak için flexbox kullanıyoruz
-    justifyContent="center" // Yatayda ortalama
-    alignItems="center" // Dikeyde ortalama
+    position="fixed" // Sabit pozisyon, tüm ekranı kapsar ve scroll'da hareket etmez
+    top={0}
+    left={0}
+    w="100vw"
+    h="100vh"
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    overflow="hidden" // Gereksiz taşmaları engellemek için overflow'u gizliyoruz
   >
     {children}
   </Box>
