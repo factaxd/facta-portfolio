@@ -48,7 +48,7 @@ const Home = () => (
           transition: 'all 0.3s ease-in-out',
         }}
       >
-        Hello, I&apos;m a software developer.
+        Hello, I&apos;m a software engineer.
     </Box>
 
       <Box display={{ md: 'flex' }}>
