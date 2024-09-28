@@ -79,7 +79,8 @@ const Works = () => (
         <List mt={4} spacing={3}>
           <ListItem fontSize="sm"> {/* Adjusted font size for smaller text */}
             <ListIcon as={ChevronRightIcon} color="green.500" /> {/* Icon used for each list item */}
-            Worked with clients from diverse industries to build tailored web and mobile applications          </ListItem>
+            Worked with clients from diverse industries to build tailored web and mobile applications  
+            </ListItem>        
           <ListItem fontSize="sm">
             <ListIcon as={ChevronRightIcon} color="green.500" />
             Managed and delivered projects from conception to deployment
