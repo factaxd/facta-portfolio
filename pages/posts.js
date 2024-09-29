@@ -31,7 +31,9 @@ const Posts = () => (
       <Heading as="h3" mb={10} variant="section-title">
         Services
       </Heading>
-     
+
+      
+
     </Container>
   </Layout>
 )
