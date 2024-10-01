@@ -31,7 +31,7 @@ const Posts = () => (
 
       {/* Fullstack Website Development Service */}
       <Section delay={0.1}>
-        <Box textAlign="center" mb={8}>
+        <Box p={6} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
           <Heading as="h4" fontSize="xl" color="orange.400" mb={4}>
             Fullstack Website Development
           </Heading>
@@ -55,7 +55,7 @@ const Posts = () => (
 
       {/* Indie Game Development Service */}
       <Section delay={0.2}>
-        <Box textAlign="center" mb={8}>
+        <Box p={6} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
           <Heading as="h4" fontSize="xl" color="orange.400" mb={4}>
             Indie Game Development
           </Heading>
@@ -78,7 +78,7 @@ const Posts = () => (
 
       {/* 3D Modeling and Design Service */}
       <Section delay={0.3}>
-        <Box textAlign="center" mb={8}>
+        <Box p={6} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
           <Heading as="h4" fontSize="xl" color="orange.400" mb={4}>
             3D Modeling & Design
           </Heading>
