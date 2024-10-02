@@ -30,7 +30,7 @@ const Works = () => (
           <Heading as="h2" variant="page-title">
             İsmail Yarar
           </Heading>
-          <p>Software Engineer and Designer</p>
+          <p>Software Engineer</p>
         </Box>
         <Box
           flexShrink={0}

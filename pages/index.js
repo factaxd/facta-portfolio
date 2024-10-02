@@ -56,7 +56,7 @@ const Home = () => (
           <Heading as="h2" variant="page-title">
             İsmail Yarar
           </Heading>
-          <p>Software Engineer and Designer</p>
+          <p>Software Engineer</p>
         </Box>
         <Box
           flexShrink={0}
@@ -120,7 +120,7 @@ const Home = () => (
           <Link href="https://factaxd.itch.io/" target="_blank">
             Making Games
           </Link>
-          , Learning New Technologies, Cooking,
+          , Learning New Technologies
         </Paragraph>
       </Section>
 
