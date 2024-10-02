@@ -56,25 +56,46 @@ const VoxelRain = () => {
       controls.maxDistance = 50 // Maksimum uzaklık (zoom-out sınırı)
 
       // Yağmur damlacıklarını oluşturuyoruz
-      const rainCount = 10000 // Yağmur damlacık sayısını artırabiliriz
+      const rainCount = 12000
       const rainGeometry = new THREE.BufferGeometry()
       const rainPositions = new Float32Array(rainCount * 3)
-      const rainSpeeds = new Float32Array(rainCount) // Farklı hızlar için
+      const rainColors = new Float32Array(rainCount * 3)
+      const rainSpeeds = new Float32Array(rainCount)
+      const rainSizes = new Float32Array(rainCount)
+
+      const colorPalette = [
+        new THREE.Color(0x87CEEB), // Sky Blue
+        new THREE.Color(0x4682B4), // Steel Blue
+        new THREE.Color(0xADD8E6), // Light Blue
+        new THREE.Color(0xB0E0E6), // Powder Blue
+        new THREE.Color(0x00BFFF)  // Deep Sky Blue
+      ]
 
       for (let i = 0; i < rainCount; i++) {
         rainPositions[i * 3] = Math.random() * 400 - 200
         rainPositions[i * 3 + 1] = Math.random() * 500 - 250
         rainPositions[i * 3 + 2] = Math.random() * 400 - 200
-        rainSpeeds[i] = Math.random() * 0.05 + 0.02 // Her yağmur tanesi için farklı bir hız
+
+        const color = colorPalette[Math.floor(Math.random() * colorPalette.length)]
+        rainColors[i * 3] = color.r
+        rainColors[i * 3 + 1] = color.g
+        rainColors[i * 3 + 2] = color.b
+
+        rainSpeeds[i] = Math.random() * 0.1 + 0.05 // Hızları düşürdük
+        rainSizes[i] = Math.random() * 0.2 + 0.1 // Boyutları küçülttük
       }
 
       rainGeometry.setAttribute('position', new THREE.BufferAttribute(rainPositions, 3))
+      rainGeometry.setAttribute('color', new THREE.BufferAttribute(rainColors, 3))
+      rainGeometry.setAttribute('size', new THREE.BufferAttribute(rainSizes, 1))
 
       const rainMaterial = new THREE.PointsMaterial({
-        color: 0xaaaaaa,
-        size: 0.6, // Daha küçük boyutlar daha estetik olabilir
+        size: 0.5, // Genel boyutu küçülttük
         transparent: true,
-        opacity: 0.6, // Opaklığı biraz daha düşürdük
+        opacity: 0.6,
+        vertexColors: true,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true,
       })
 
       const rain = new THREE.Points(rainGeometry, rainMaterial)
@@ -84,23 +105,38 @@ const VoxelRain = () => {
       const animate = () => {
         req = requestAnimationFrame(animate)
 
-        // Yağmur damlacıklarını hareket ettiriyoruz
         const positions = rain.geometry.attributes.position.array
+        const colors = rain.geometry.attributes.color.array
+        const sizes = rain.geometry.attributes.size.array
+
         for (let i = 0; i < rainCount; i++) {
-          positions[i * 3 + 1] -= rainSpeeds[i] // Farklı hızlarla yumuşak düşme
+          positions[i * 3 + 1] -= rainSpeeds[i]
 
-          // Hafif rüzgar etkisi (yatayda rastgele hareket)
-          positions[i * 3] += Math.sin(Date.now() * 0.001 + i) * 0.01
-          positions[i * 3 + 2] += Math.cos(Date.now() * 0.001 + i) * 0.01
+          // Yumuşak dalga efekti
+          positions[i * 3] += Math.sin(Date.now() * 0.0005 + i) * 0.02 // Dalga hızını ve genliğini azalttık
+          positions[i * 3 + 2] += Math.cos(Date.now() * 0.001 + i) * 0.02
 
-          if (positions[i * 3 + 1] < -200) {
-            positions[i * 3 + 1] = 200 // Eğer yer seviyesine ulaştıysa, yukarıya al
+          if (positions[i * 3 + 1] < -250) {
+            positions[i * 3 + 1] = 250
+            // Renk geçişi efekti
+            const color = colorPalette[Math.floor(Math.random() * colorPalette.length)]
+            colors[i * 3] = color.r
+            colors[i * 3 + 1] = color.g
+            colors[i * 3 + 2] = color.b
           }
+
+          // Boyut animasyonu
+          sizes[i] = rainSizes[i] * (Math.sin(Date.now() * 0.002 + i) * 0.1 + 0.9) // Boyut değişimini azalttık
         }
 
         rain.geometry.attributes.position.needsUpdate = true
+        rain.geometry.attributes.color.needsUpdate = true
+        rain.geometry.attributes.size.needsUpdate = true
 
-        controls.update() // Kamera kontrol güncellemesi
+        // Opaklık animasyonu
+        rainMaterial.opacity = 0.5 + Math.sin(Date.now() * 0.001) * 0.1 // Opaklık değişimini azalttık
+
+        controls.update()
         renderer.render(scene, camera)
       }
 
