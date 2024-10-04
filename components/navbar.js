@@ -79,11 +79,11 @@ const Navbar = props => {
           flexGrow={1}
           mt={{ base: 4, md: 0 }}
         >
-          <LinkItem href="/works" path={path}>
+          <LinkItem href="/portfolio" path={path}>
             Portfolio
           </LinkItem>
           
-          <LinkItem href="/wallpapers" path={path}>
+          <LinkItem href="/projects" path={path}>
             Projects
           </LinkItem>
 
@@ -147,7 +147,7 @@ const Navbar = props => {
                 
                 <MenuItem
                   as={MenuLink}
-                  href="/works"
+                  href="/portfolio"
                   bg={useColorModeValue('#dd6b20', '#fbd38d')}
                   color={useColorModeValue('white', 'black')}
                   _hover={{
@@ -160,7 +160,7 @@ const Navbar = props => {
 
                 <MenuItem
                   as={MenuLink}
-                  href="/wallpapers"
+                  href="/projects"
                   bg={useColorModeValue('#dd6b20', '#fbd38d')}
                   color={useColorModeValue('white', 'black')}
                   _hover={{

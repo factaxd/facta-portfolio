@@ -16,8 +16,8 @@ import Layout from '../components/layouts/article'
 import Image from 'next/image'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
-const Works = () => (
-  <Layout title="Works">
+const Portfolio = () => (
+  <Layout title="Portfolio">
     <Container
       mt={16}
       bg={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(0, 0, 0, 0.8)')} 
@@ -179,5 +179,5 @@ const Works = () => (
   </Layout>
 )
 
-export default Works
+export default Portfolio
 export { getServerSideProps } from '../components/chakra'

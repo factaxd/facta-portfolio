@@ -12,10 +12,10 @@ import {
 import Layout from '../../components/layouts/article'
 import Section from '../../components/section'
 import Image from 'next/image'  
-import bananadungeon from '../../public/images/wallpapers/bananadungeon.png'  
-import twitchchat from '../../public/images/wallpapers/twitch-chat.jpg'       
+import bananadungeon from '../../public/images/projects/bananadungeon.png'  
+import twitchchat from '../../public/images/projects/twitch-chat.jpg'       
 
-const Wallpapers = () => (
+const Projects = () => (
   <Layout title="Projects">
     <Container
       mt={16}
@@ -103,5 +103,5 @@ const Wallpapers = () => (
   </Layout>
 )
 
-export default Wallpapers
+export default Projects
 export { getServerSideProps } from '../../components/chakra'
