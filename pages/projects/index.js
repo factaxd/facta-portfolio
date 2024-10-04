@@ -31,7 +31,7 @@ const Projects = () => (
 
       {/* Project 1 */}
       <Section>
-        <Box p={6} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
+        <Box p={6} borderRadius="lg" border="1px solid" borderColor={useColorModeValue('#c05621', '#f6ad55')}   boxShadow={useColorModeValue('0 4px 6px rgba(192, 86, 33, 0.4)', '0 4px 6px rgba(246, 173, 85, 0.4)')} mb={6}>
           {/* Thumbnail Image - Next.js Image Component */}
           <Image 
             src={bananadungeon} 
@@ -66,7 +66,7 @@ const Projects = () => (
 
       {/* Project 2 */}
       <Section>
-        <Box p={6} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
+      <Box p={6} borderRadius="lg" border="1px solid" borderColor={useColorModeValue('#c05621', '#f6ad55')}   boxShadow={useColorModeValue('0 4px 6px rgba(192, 86, 33, 0.4)', '0 4px 6px rgba(246, 173, 85, 0.4)')} mb={6}>
           {/* Thumbnail Image - Next.js Image Component */}
           <Image 
             src={twitchchat} 

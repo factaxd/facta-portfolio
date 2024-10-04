@@ -16,7 +16,7 @@ export const DogContainer = forwardRef(({ children }, ref) => (
   <Box
     ref={ref}
     className="voxel-dog"
-    position="fixed" // Sabit pozisyon, tüm ekranı kapsar ve scroll'da hareket etmez
+    position="fixed" 
     top={0}
     left={0}
     w="100vw"
@@ -24,7 +24,7 @@ export const DogContainer = forwardRef(({ children }, ref) => (
     display="flex"
     justifyContent="center"
     alignItems="center"
-    overflow="hidden" // Gereksiz taşmaları engellemek için overflow'u gizliyoruz
+    overflow="hidden" 
   >
     {children}
   </Box>

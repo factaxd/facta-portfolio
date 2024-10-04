@@ -65,7 +65,7 @@ const Portfolio = () => (
       </Heading>
 
       {/* Freelance Developer Experience */}
-      <Box p={4} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
+      <Box p={4} borderRadius="lg" bg={useColorModeValue('orange.100', 'gray.900')} boxShadow="md" mb={6}>
         <Heading as="h4" fontSize={18} mb={2}>
           Freelance Developer
         </Heading>
@@ -101,7 +101,7 @@ const Portfolio = () => (
       </Box>
 
       {/* Mendix Developer Experience */}
-      <Box p={4} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
+      <Box p={4} borderRadius="lg" bg={useColorModeValue('orange.100', 'gray.900')} boxShadow="md" mb={6}>
         <Heading as="h4" fontSize={18} mb={2}>
           Mendix Developer
         </Heading>
@@ -141,7 +141,7 @@ const Portfolio = () => (
       </Heading>
 
       {/* Education Section */}
-      <Box p={4} borderRadius="lg" bg={useColorModeValue('gray.100', 'gray.900')} boxShadow="md" mb={6}>
+      <Box p={4} borderRadius="lg" bg={useColorModeValue('orange.100', 'gray.900')} boxShadow="md" mb={6}>
         <Heading as="h4" fontSize={18} mb={2}>
           B.Sc. in Software Engineering
         </Heading>
