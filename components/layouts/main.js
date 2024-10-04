@@ -18,8 +18,8 @@ const Main = ({ children, router }) => {
         <meta name="description" content="facta's homepage" />
         <meta name="author" content="facta" />
         <meta name="author" content="craftzdog" />
-        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="facta-image" href="facta-image.jpeg" />
+        <link rel="shortcut icon" href="/abc.ico" type="image/x-icon" />
         <meta name="twitter:title" content="facta" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:site_name" content="facta" />
