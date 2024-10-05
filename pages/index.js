@@ -87,14 +87,7 @@ const Home = () => (
           About Me
         </Heading>
         <Paragraph>
-          I'm a passionate software engineer who loves building 
-          innovative digital solutions. I thrive on turning ideas into reality, 
-          from the initial stages of planning and design to solving real-world 
-          problems through code. When I'm not working, I enjoy exploring new 
-          technologies and working on side projects. Currently, I'm focused on 
-          developing personal projects and continuously improving my technical skills. 
-          I also enjoy sharing my knowledge and insights with the developer 
-          community to inspire others.
+        As a software engineer, I'm passionate about creating innovative digital solutions. I love turning ideas into reality, from the early stages of planning and design to solving real-world problems with code. When I'm not at work, I enjoy exploring new technologies and working on side projects. Right now, I'm focusing on personal projects and continuously improving my technical skills. I also like to share my knowledge and insights with the developer community to inspire others.
         </Paragraph>
         <Box align="center" my={4}>
           <Button
