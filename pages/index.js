@@ -87,7 +87,7 @@ const Home = () => (
           About Me
         </Heading>
         <Paragraph>
-          I'm İsmail Yarar, a passionate software engineer who loves building 
+          I'm a passionate software engineer who loves building 
           innovative digital solutions. I thrive on turning ideas into reality, 
           from the initial stages of planning and design to solving real-world 
           problems through code. When I'm not working, I enjoy exploring new 

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { DogSpinner, DogContainer } from './voxel-dog-loader'
+import { JSSpinner, JSContainer } from './3js-loader'
 
 const VoxelRain = () => {
   const refContainer = useRef()
@@ -159,7 +159,7 @@ const VoxelRain = () => {
   }, [handleWindowResize])
 
   return (
-    <DogContainer ref={refContainer}>{loading && <DogSpinner />}</DogContainer>
+    <JSContainer ref={refContainer}>{loading && <JSSpinner />}</JSContainer>
   )
 }
 
