@@ -1,3 +1,4 @@
+import React from 'react'
 import NextLink from 'next/link'
 import { 
   Container, 
@@ -13,7 +14,8 @@ import Layout from '../../components/layouts/article'
 import Section from '../../components/section'
 import Image from 'next/image'  
 import bananadungeon from '../../public/images/projects/bananadungeon.png'  
-import twitchchat from '../../public/images/projects/twitch-chat.jpg'       
+import twitchchat from '../../public/images/projects/twitch-chat.jpg'
+import joblisting from '../../public/images/projects/joblisting.png'  // Add your image here
 
 const Projects = () => (
   <Layout title="Projects">
@@ -88,6 +90,41 @@ const Projects = () => (
             <Button
               as={NextLink}
               href="https://github.com/factaxd/twitch-chat-reader"
+              target="_blank"
+              colorScheme="orange"
+              variant="outline"
+              mt={2}
+            >
+              View on GitHub
+            </Button>
+          </Center>
+        </Box>
+      </Section>
+
+      {/* Project 3: Job Listing Platform */}
+      <Section>
+        <Box p={6} borderRadius="lg" border="1px solid" borderColor={useColorModeValue('#c05621', '#f6ad55')}   boxShadow={useColorModeValue('0 4px 6px rgba(192, 86, 33, 0.4)', '0 4px 6px rgba(246, 173, 85, 0.4)')} mb={6}>
+          {/* Thumbnail Image - Next.js Image Component */}
+          <Image 
+            src={joblisting}
+            alt="Job Listing Platform" 
+            layout="responsive"   
+            width={600}         
+            height={400}        
+            quality={80}          
+            placeholder="blur"    
+          />
+          <Heading as="h4" fontSize="xl" mt={4} mb={2} textAlign="center">
+            Job Listing Platform
+          </Heading>
+          <Text mt={2} mb={2} color={useColorModeValue('gray.700', 'gray.300')} textAlign="justify">
+            A React-based job listing platform that allows users to create, edit, and delete job listings. The platform features job details, company information, and salary insights, with a focus on user experience and responsive design.
+          </Text>
+          {/* GitHub Button */}
+          <Center>
+            <Button
+              as={NextLink}
+              href="https://github.com/factaxd/react-job-site" 
               target="_blank"
               colorScheme="orange"
               variant="outline"
